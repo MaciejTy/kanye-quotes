@@ -1,19 +1,23 @@
 from tkinter import *
 import requests
-
-
+from pygame import mixer
 def get_quote():
-    #Write your code here.
     response = requests.get("https://api.kanye.rest")
     response.raise_for_status()
     data = response.json()
     quote = data["quote"]
     canvas.itemconfig(quote_text, text=quote, font=("Arial", 15, "bold"))
 
+def play_music():
+    mixer.music.load("Lift Yourself.mp3")
+    mixer.music.play()
+
+mixer.init()
 
 window = Tk()
 window.title("Kanye Says...")
 window.config(padx=50, pady=50)
+play_music()
 
 canvas = Canvas(width=300, height=414)
 background_img = PhotoImage(file="background.png")
