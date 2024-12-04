@@ -8,7 +8,7 @@ def get_quote():
     response.raise_for_status()
     data = response.json()
     quote = data["quote"]
-    canvas.itemconfig(quote_text, text=quote)
+    canvas.itemconfig(quote_text, text=quote, font=("Arial", 15, "bold"))
 
 
 window = Tk()
